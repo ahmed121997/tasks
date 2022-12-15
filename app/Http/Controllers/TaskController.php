@@ -5,12 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\Task;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator ;
+use Illuminate\Support\Facades\Validator;
 
 class TaskController extends Controller
 {
 
-    public function __construct(){
+    public function __construct()
+    {
         return $this->middleware('auth');
     }
 
@@ -32,7 +33,7 @@ class TaskController extends Controller
     public function create()
     {
         $users = User::all();
-        return view('tasks.create',['users'=>$users]);
+        return view('tasks.create', ['users' => $users]);
     }
 
     /**
@@ -45,13 +46,15 @@ class TaskController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required|max:255',
+            'dec' => 'required',
+            'deadline' => 'required',
         ]);
         if ($validator->fails()) {
-            return redirect('/album/create')
+            return back()
                 ->withErrors($validator)
                 ->withInput();
         }
-        Task::create(['name' => $request->name, 'user_id' => $request->officer, 'dead_line' => $request->deadline]);
+        Task::create(['name' => $request->name, 'user_id' => $request->officer, 'dec' => $request->dec, 'dead_line' => $request->deadline]);
         return redirect('/');
     }
 
@@ -97,17 +100,17 @@ class TaskController extends Controller
      */
     public function destroy($task)
     {
-      $res = Task::findOrFail($task);
-      $res->delete();
-      return back();
+        $res = Task::findOrFail($task);
+        $res->delete();
+        return back();
     }
 
 
     public function done($task)
     {
-      $res = Task::findOrFail($task);
-      $res->status = 1;
-      $res->save();
-      return back();
+        $res = Task::findOrFail($task);
+        $res->status = 1;
+        $res->save();
+        return back();
     }
 }

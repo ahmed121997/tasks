@@ -32,13 +32,13 @@ class HomeController extends Controller
     public function getTasks(Request $request)
     {
         $user = auth()->user();
-        if($user->isAdmin() == 0){
+        if(!$user->isAdmin()){
             $data = $user->tasks;
             foreach($data as $d){
                 $d->status = ($d->status == 0) ? 'Not Done' : "Done";
             }
             // helpers
-            return getDataTables($request, $data);
+            return getDataTablesWithoutAction($request, $data);
         }
         $data = Task::get();
         foreach($data as $d){

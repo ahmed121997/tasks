@@ -1,3 +1,3 @@
-$('.task-delete').click(function () {
+$('#task-delete').click(function () {
     return confirm('Are you sure ?');
  });

@@ -4,3 +4,30 @@
 div.dataTables_wrapper div.dataTables_length select{
     min-width: 75px;
 }
+
+.yajra-datatable td {
+    vertical-align: middle !important;
+  }
+  .yajra-datatable  .dec{
+    width: 150px !important;
+}
+
+.yajra-datatable .no,
+.yajra-datatable .name,
+.yajra-datatable .officer,
+.yajra-datatable .deadline,
+.yajra-datatable .status,
+.yajra-datatable .action
+ {
+    width: auto !important;
+}
+
+
+form {
+    background-color: #FFF;
+    padding: 20px;
+    border-radius: 5px;
+}
+form label {
+    font-size: medium;
+}
