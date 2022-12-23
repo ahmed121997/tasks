@@ -13,12 +13,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\Task::factory(1)->create([
-            'status' => 0,
-            'user_id' => 2,
-            'name' => "test 22",
-            'dec' => "odifo og gu i ii ii hi",
-            'dead_line' => now(),
+        $this->call([
+            TaskSeeder::class,
 
         ]);
     }
