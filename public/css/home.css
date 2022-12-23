@@ -31,3 +31,7 @@ form {
 form label {
     font-size: medium;
 }
+
+.navbar-light .navbar-toggler{
+    margin-inline-end: 0.5em;
+}
