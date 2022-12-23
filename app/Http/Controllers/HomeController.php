@@ -45,30 +45,8 @@ class HomeController extends Controller
             $d->officer = $d->user->name;
             $d->status = ($d->status == 0) ? 'Not Done' : "Done";
         }
-        return $this->getDataTables($request, $data);
+        return getDataTables($request, $data);
 
     }
 
-   public function getDataTables($request, $data)
-{
-    if ($request->ajax()) {
-        return DataTables::of($data)
-            ->addIndexColumn()
-            ->addColumn('action', function ($row) {
-
-                if($row->status == 'Not Done'){
-                    $actionBtn =
-                    '<a href="task/done/' . $row->id . '" class="mr-2"><i class="far fa-check-circle text-success"></i></a>
-                    <a onClick="return confirm(\'Are you sure to delete ?\');" href="task/delete/' . $row->id . '" ><i class="far fa-trash-alt text-danger"></a>';
-                }else{
-                    $actionBtn =
-                    '<a onClick="return confirm(\'Are you sure to delete ?\');" href="task/delete/' . $row->id . '" ><i class="far fa-trash-alt text-danger"></a>';
-                }
-
-                return $actionBtn;
-            })
-            ->rawColumns(['action'])
-            ->make(true);
-    }
-}
 }

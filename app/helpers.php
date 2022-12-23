@@ -4,7 +4,7 @@
  * function to get data using library "yajra/laravel-datatables-oracle"
  * you to install this library
  */
-function getDataTables($request, $data)
+ function getDataTables($request, $data)
 {
     if ($request->ajax()) {
         return DataTables::of($data)
@@ -14,10 +14,10 @@ function getDataTables($request, $data)
                 if($row->status == 'Not Done'){
                     $actionBtn =
                     '<a href="task/done/' . $row->id . '" class="mr-2"><i class="far fa-check-circle text-success"></i></a>
-                    <a class="task-delete" href="task/delete/' . $row->id . '" ><i class="far fa-trash-alt text-danger"></a>';
+                    <a onClick="return confirm(\'Are you sure to delete ?\');" href="task/delete/' . $row->id . '" ><i class="far fa-trash-alt text-danger"></a>';
                 }else{
                     $actionBtn =
-                    '<a class="task-delete" href="task/delete/' . $row->id . '" ><i class="far fa-trash-alt text-danger"></a>';
+                    '<a onClick="return confirm(\'Are you sure to delete ?\');" href="task/delete/' . $row->id . '" ><i class="far fa-trash-alt text-danger"></a>';
                 }
 
                 return $actionBtn;
