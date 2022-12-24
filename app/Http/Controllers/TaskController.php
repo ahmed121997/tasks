@@ -66,7 +66,7 @@ class TaskController extends Controller
      */
     public function show(Task $task)
     {
-        //
+
     }
 
     /**
@@ -77,7 +77,8 @@ class TaskController extends Controller
      */
     public function edit(Task $task)
     {
-        //
+        $users = User::all();
+        return view('tasks.edit',['task' => $task,'users' => $users]);
     }
 
     /**
@@ -89,7 +90,26 @@ class TaskController extends Controller
      */
     public function update(Request $request, Task $task)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|max:255',
+            'dec' => 'required',
+            'deadline' => 'required',
+            'status' => 'required',
+            'officer' => 'required'
+        ]);
+        if ($validator->fails()) {
+            return back()
+                ->withErrors($validator)
+                ->withInput();
+        }
+        $task->update([
+            'name'=> $request->name,
+            'dec'=> $request->dec,
+            'user_id'=> $request->officer,
+            'dead_line'=> $request->deadline,
+            'status' => intval($request->status),
+        ]);
+        return redirect('/')->with('success_update','Task is updated successfully!');
     }
 
     /**

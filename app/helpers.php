@@ -14,10 +14,12 @@
                 if($row->status == 'Not Done'){
                     $actionBtn =
                     '<a href="task/done/' . $row->id . '" class="mr-2"><i class="far fa-check-circle text-success"></i></a>
-                    <a onClick="return confirm(\'Are you sure to delete ?\');" href="task/delete/' . $row->id . '" ><i class="far fa-trash-alt text-danger"></a>';
+                    <a href="tasks/' . $row->id . '/edit" class="mr-2"><i class="far fa-edit text-primary"></i></a>
+                    <a onClick="return confirm(\'Are you sure to delete ?\');" href="task/delete/' . $row->id . '" ><i class="far fa-trash-alt text-danger"></i></a>';
                 }else{
                     $actionBtn =
-                    '<a onClick="return confirm(\'Are you sure to delete ?\');" href="task/delete/' . $row->id . '" ><i class="far fa-trash-alt text-danger"></a>';
+                    '<a onClick="return confirm(\'Are you sure to delete ?\');" href="task/delete/' . $row->id . '" ><i class="far fa-trash-alt text-danger mr-2"></i></a>
+                    <a href="tasks/' . $row->id . '/edit" class=""><i class="far fa-edit text-primary"></i></a>';
                 }
 
                 return $actionBtn;
