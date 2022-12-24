@@ -4,7 +4,14 @@
 @endsection
 @section('content')
     <div class="container">
-
+        @if (Session::has('success_update'))
+        <div class="message text-success"><i class="fa fa-check-circle" aria-hidden="true"></i>
+            {{ Session::get('success_update') }}</div>
+    @endif
+    @if (Session::has('message'))
+        <div class="message text-success"><i class="fa fa-check-circle" aria-hidden="true"></i>
+            {{ Session::get('message') }}</div>
+    @endif
         <div class="card">
             <div class="card-header h2">{{ __('Tasks') }}</div>
 

@@ -55,7 +55,7 @@ class TaskController extends Controller
                 ->withInput();
         }
         Task::create(['name' => $request->name, 'user_id' => $request->officer, 'dec' => $request->dec, 'dead_line' => $request->deadline]);
-        return redirect('/');
+        return redirect('/')->with('success_update','Task is added successfully!');
     }
 
     /**
@@ -102,7 +102,7 @@ class TaskController extends Controller
     {
         $res = Task::findOrFail($task);
         $res->delete();
-        return back();
+        return back()->with('success_update','Task is deleted successfully!');
     }
 
 
@@ -111,6 +111,6 @@ class TaskController extends Controller
         $res = Task::findOrFail($task);
         $res->status = 1;
         $res->save();
-        return back();
+        return back()->with('success_update','Task is Done successfully!');
     }
 }
