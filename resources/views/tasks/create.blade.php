@@ -1,12 +1,11 @@
 @extends('layouts.app')
 @section('links')
-    <link href="{{ asset('/css/home.css') }}" rel="stylesheet">
 @endsection
 @section('content')
     <div class="container">
         <div class="row">
 
-            <div class="col-8 offset-2">
+            <div class="col-lg-8 offset-lg-2">
                 <h4>Add Task</h4>
                 <form method="POST" action="{{ route('tasks.store') }}">
                     @csrf

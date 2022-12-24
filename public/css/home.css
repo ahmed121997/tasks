@@ -1,3 +1,6 @@
+*{
+   font-weight: normal;
+}
 .yajra-datatable{
     background-color: #FFF;
 }
@@ -26,7 +29,10 @@ div.dataTables_wrapper div.dataTables_length select{
 form {
     background-color: #FFF;
     padding: 20px;
-    border-radius: 5px;
+    border-radius: 20px;
+    border: 1.5px solid #343a4059;
+    box-shadow: 2px 2px rgb(13 110 253 / 25%);
+
 }
 form label {
     font-size: medium;
@@ -50,4 +56,7 @@ form label {
     font-size:16px;
     text-align: center;
     z-index: 100;
+}
+.navbar-nav .nav-link{
+    margin-inline-start: 1.5em;
 }
