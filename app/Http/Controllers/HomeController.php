@@ -35,7 +35,12 @@ class HomeController extends Controller
         if(!$user->isAdmin()){
             $data = $user->tasks;
             foreach($data as $d){
-                $d->status = ($d->status == 0) ? 'Not Done' : "Done";
+                if($d->dead_line > now()){
+                    $d->status = ($d->status == 0) ? 'Not Done' : "Done";
+                }else{
+                    $d->status = ($d->status == 0) ? 'Expired' : "Done";
+                }
+
             }
             // helpers
             return getDataTablesWithoutAction($request, $data);
@@ -43,7 +48,11 @@ class HomeController extends Controller
         $data = Task::get();
         foreach($data as $d){
             $d->officer = $d->user->name;
-            $d->status = ($d->status == 0) ? 'Not Done' : "Done";
+            if($d->dead_line > now()){
+                $d->status = ($d->status == 0) ? 'Not Done' : "Done";
+            }else{
+                $d->status = ($d->status == 0) ? 'Expired' : "Done";
+            }
         }
         return getDataTables($request, $data);
 

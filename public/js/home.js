@@ -8,5 +8,12 @@ function myFunction(){
         "background": "#c33d4a",
         "color" : "#FFF"
 
-});}
+});
+$( "td:contains('Expired')" ).css({
+    "background": "#c33d4a",
+    "color" : "#FFF"
+
+});
+
+}
 setTimeout(myFunction, 700);

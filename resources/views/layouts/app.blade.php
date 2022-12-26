@@ -25,7 +25,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('public/css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('public/css/home.css') }}" rel="stylesheet">
+    <link  href="{{ asset('public/css/home.css') }}" rel="stylesheet">
     @yield('links')
 </head>
 
@@ -112,7 +112,7 @@
     <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-    <script src="{{ asset('public/js/home.js') }}"></script>
+    <script src="{{ asset('public/js/home.js') }}" defer></script>
     @yield('scripts')
 </body>
 
