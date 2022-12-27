@@ -11,7 +11,7 @@
             ->addIndexColumn()
             ->addColumn('action', function ($row) {
 
-                if($row->status == 'Not Done'){
+                if($row->status == 'Not Done' or $row->status == 'Expired'){
                     $actionBtn =
                     '<a href="task/done/' . $row->id . '" class="mr-2"><i class="far fa-check-circle text-success"></i></a>
                     <a href="tasks/' . $row->id . '/edit" class="mr-2"><i class="far fa-edit text-primary"></i></a>
